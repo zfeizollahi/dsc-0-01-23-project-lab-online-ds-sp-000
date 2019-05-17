@@ -46,16 +46,41 @@ A common python programming pattern to counting objects, produce histograms, or 
 
 
 ```python
+from collections import Counter
+import matplotlib.pyplot as plt
+```
+
+
+```python
 # Your code here
 
 # Pseudo-code Outline
+
 # Split the transcript into words
-# Create a dictionary
-# Iterate through the text of Macbeth
-# Update word counts
+macbeth_words = macbeth.split()
+# Create a dictionary & Iterate through the text of Macbeth
+macbeth_counter = Counter(macbeth_words)
+most_common = macbeth_counter.most_common(10)
+macbeth_dict = dict(most_common)
+word_list = list(macbeth_dict.keys())
+word_counts = list(macbeth_dict.values())
+
 # Create Bar Graph
+plt.bar(word_list, word_counts)
+
 # Include descriptive titles and labels
+plt.xlabel('Word')
+plt.xticks(word_list[:10], rotation = 'vertical')
+plt.ylabel('word count')
+
+# Give a title to the bar graph
+plt.title("Top 10 Words in Macbeth")
+plt.show()
 ```
+
+
+![png](index_files/index_7_0.png)
+
 
 ### Level Up (Optional)
 This project should take you about an hour and a half to complete. If you're done much more quickly than that and are not behind in the course, feel free to deepen your knowledge by completing any or all of the following tasks until you run out of time:
